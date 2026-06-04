@@ -31,8 +31,8 @@ class NewVideo extends StatelessWidget {
         actions: [
           CupertinoDialogAction(
             onPressed: () => pickVideo(ImageSource.gallery, context),
-            child: Row(
-              children: const [
+            child: const Row(
+              children: [
                 Icon(CupertinoIcons.list_bullet_indent),
                 Padding(
                   padding: EdgeInsets.all(7.0),
@@ -46,8 +46,8 @@ class NewVideo extends StatelessWidget {
           ),
           CupertinoDialogAction(
             onPressed: () => pickVideo(ImageSource.camera, context),
-            child: Row(
-              children: const [
+            child: const Row(
+              children: [
                 Icon(CupertinoIcons.camera),
                 Padding(
                   padding: EdgeInsets.all(7.0),
@@ -61,8 +61,8 @@ class NewVideo extends StatelessWidget {
           ),
           CupertinoDialogAction(
             onPressed: () => Navigator.of(context).pop(),
-            child: Row(
-              children: const [
+            child: const Row(
+              children: [
                 Icon(CupertinoIcons.escape),
                 Padding(
                   padding: EdgeInsets.all(7.0),
