@@ -7,12 +7,12 @@ import 'package:timeago/timeago.dart' as timeago;
 class CommentView extends StatelessWidget {
   final String id;
   CommentView({
-    Key? key,
+    super.key,
     required this.id,
-  }) : super(key: key);
+  });
 
   final TextEditingController _commentController = TextEditingController();
-  CommentController commentController = Get.put(CommentController());
+  final CommentController commentController = Get.put(CommentController());
 
   @override
   Widget build(BuildContext context) {

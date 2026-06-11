@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:tikitiki/models.dart';
+import 'package:tikitiki/services/firebase_stubs.dart';
 
 class SearchController extends GetxController {
   final Rx<List<User>> _searchedUsers = Rx<List<User>>([]);

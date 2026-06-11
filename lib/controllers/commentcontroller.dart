@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
-import 'package:tikitiki/views/models.dart';
+import 'package:tikitiki/models.dart';
+import 'package:tikitiki/constants.dart';
+import 'package:tikitiki/services/firebase_stubs.dart';
 
 class CommentController extends GetxController {
   final Rx<List<Comment>> _comments = Rx<List<Comment>>([]);

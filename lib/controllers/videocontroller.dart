@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 import 'package:tikitiki/models.dart';
+import 'package:tikitiki/constants.dart';
+import 'package:tikitiki/services/firebase_stubs.dart';
 
 class VideoController extends GetxController {
   final Rx<List<Video>> _videoList = Rx<List<Video>>([]);
@@ -48,8 +50,8 @@ class UploadVideoController extends GetxController {
   Future<String> _uploadVideoToStorage(String id, String videoPath) async {
     Reference ref = firebaseStorage.ref().child('videos').child(id);
 
-    UploadTask uploadTask = ref.putFile(await _compressVideo(videoPath));
-    TaskSnapshot snap = await uploadTask;
+    final uploadTask = ref.putFile(await _compressVideo(videoPath));
+    final snap = await uploadTask.whenComplete;
     String downloadUrl = await snap.ref.getDownloadURL();
     return downloadUrl;
   }
@@ -61,26 +63,24 @@ class UploadVideoController extends GetxController {
 
   Future<String> _uploadImageToStorage(String id, String videoPath) async {
     Reference ref = firebaseStorage.ref().child('thumbnails').child(id);
-    UploadTask uploadTask = ref.putFile(await _getThumbnail(videoPath));
-    TaskSnapshot snap = await uploadTask;
+    final uploadTask = ref.putFile(await _getThumbnail(videoPath));
+    final snap = await uploadTask.whenComplete;
     String downloadUrl = await snap.ref.getDownloadURL();
     return downloadUrl;
   }
 
-  // upload video
   uploadVideo(String songName, String caption, String videoPath) async {
     try {
       String uid = firebaseAuth.currentUser!.uid;
       DocumentSnapshot userDoc =
           await firestore.collection('users').doc(uid).get();
-      // get id
       var allDocs = await firestore.collection('videos').get();
       int len = allDocs.docs.length;
       String videoUrl = await _uploadVideoToStorage("Video $len", videoPath);
       String thumbnail = await _uploadImageToStorage("Video $len", videoPath);
 
       Video video = Video(
-        username: (userDoc.data()! as Map<String, dynamic>)['name'],
+        username: userDoc.data()!['name'],
         uid: uid,
         id: "Video $len",
         likes: [],
@@ -89,7 +89,7 @@ class UploadVideoController extends GetxController {
         songName: songName,
         caption: caption,
         videoUrl: videoUrl,
-        profilePhoto: (userDoc.data()! as Map<String, dynamic>)['profilePhoto'],
+        profilePhoto: userDoc.data()!['profilePhoto'],
         thumbnail: thumbnail,
       );
 

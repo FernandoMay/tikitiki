@@ -5,7 +5,7 @@ import 'package:tikitiki/models.dart';
 import 'package:tikitiki/views/profileview.dart';
 
 class SearchView extends StatelessWidget {
-  SearchView({Key? key}) : super(key: key);
+  SearchView({super.key});
 
   final SearchController searchController = Get.put(SearchController());
 
@@ -16,15 +16,6 @@ class SearchView extends StatelessWidget {
         navigationBar: CupertinoNavigationBar(
           backgroundColor: CupertinoColors.systemRed,
           middle: CupertinoSearchTextField(
-            // decoration: const BoxDecoration(
-            //   filled: false,
-            //   hintText: 'Search',
-            //   hintStyle: TextStyle(
-            //     fontSize: 18,
-            //     color: Colors.white,
-            //   ),
-            // ),
-
             onChanged: (value) => searchController.searchUser(value),
           ),
         ),

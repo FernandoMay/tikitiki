@@ -7,9 +7,9 @@ import 'package:tikitiki/controllers/profilecontroller.dart';
 class Profile extends StatefulWidget {
   final String uid;
   const Profile({
-    Key? key,
+    super.key,
     required this.uid,
-  }) : super(key: key);
+  });
 
   @override
   State<Profile> createState() => _ProfileState();
@@ -193,7 +193,6 @@ class _ProfileState extends State<Profile> {
                           const SizedBox(
                             height: 25,
                           ),
-                          // video list
                           GridView.builder(
                             shrinkWrap: true,
                             physics: const NeverScrollableScrollPhysics(),

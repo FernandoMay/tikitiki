@@ -6,7 +6,7 @@ import 'package:tikitiki/views/seacrhview.dart';
 import 'package:tikitiki/views/videoview.dart';
 
 class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
+  const Home({super.key});
 
   @override
   State<Home> createState() => _HomeState();
@@ -32,7 +32,6 @@ class _HomeState extends State<Home> {
             pageIdx = idx;
           });
         },
-        // type: BottomNavigationBarType.fixed,
         backgroundColor: bgColor,
         activeColor: CupertinoColors.systemPink,
         inactiveColor: CupertinoColors.inactiveGray,

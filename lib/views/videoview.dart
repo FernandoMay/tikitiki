@@ -6,7 +6,7 @@ import 'package:tikitiki/views/commentview.dart';
 import 'package:video_player/video_player.dart';
 
 class VideoView extends StatelessWidget {
-  VideoView({Key? key}) : super(key: key);
+  VideoView({super.key});
 
   final VideoController videoController = Get.put(VideoController());
 
@@ -245,12 +245,12 @@ class VideoView extends StatelessWidget {
 class CircleAnimation extends StatefulWidget {
   final Widget child;
   const CircleAnimation({
-    Key? key,
+    super.key,
     required this.child,
-  }) : super(key: key);
+  });
 
   @override
-  _CircleAnimationState createState() => _CircleAnimationState();
+  State<CircleAnimation> createState() => _CircleAnimationState();
 }
 
 class _CircleAnimationState extends State<CircleAnimation>
@@ -288,12 +288,12 @@ class _CircleAnimationState extends State<CircleAnimation>
 class VideoPlayerItem extends StatefulWidget {
   final String videoUrl;
   const VideoPlayerItem({
-    Key? key,
+    super.key,
     required this.videoUrl,
-  }) : super(key: key);
+  });
 
   @override
-  _VideoPlayerItemState createState() => _VideoPlayerItemState();
+  State<VideoPlayerItem> createState() => _VideoPlayerItemState();
 }
 
 class _VideoPlayerItemState extends State<VideoPlayerItem> {

@@ -1,4 +1,6 @@
 import 'package:get/get.dart';
+import 'package:tikitiki/constants.dart';
+import 'package:tikitiki/services/firebase_stubs.dart';
 
 class ProfileController extends GetxController {
   final Rx<Map<String, dynamic>> _user = Rx<Map<String, dynamic>>({});

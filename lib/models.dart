@@ -1,8 +1,10 @@
+import 'package:tikitiki/services/firebase_stubs.dart';
+
 class Comment {
   String username;
   String comment;
-  final datePublished;
-  List likes;
+  dynamic datePublished;
+  List<dynamic> likes;
   String profilePhoto;
   String uid;
   String id;
@@ -27,18 +29,18 @@ class Comment {
         'id': id,
       };
 
-  // static Comment fromSnap(DocumentSnapshot snap) {
-  //   var snapshot = snap.data() as Map<String, dynamic>;
-  //   return Comment(
-  //     username: snapshot['username'],
-  //     comment: snapshot['comment'],
-  //     datePublished: snapshot['datePublished'],
-  //     likes: snapshot['likes'],
-  //     profilePhoto: snapshot['profilePhoto'],
-  //     uid: snapshot['uid'],
-  //     id: snapshot['id'],
-  //   );
-  // }
+  static Comment fromSnap(DocumentSnapshot snap) {
+    final snapshot = snap.data() as Map<String, dynamic>;
+    return Comment(
+      username: snapshot['username'],
+      comment: snapshot['comment'],
+      datePublished: snapshot['datePublished'],
+      likes: snapshot['likes'],
+      profilePhoto: snapshot['profilePhoto'],
+      uid: snapshot['uid'],
+      id: snapshot['id'],
+    );
+  }
 }
 
 class User {
@@ -47,11 +49,12 @@ class User {
   String email;
   String uid;
 
-  User(
-      {required this.name,
-      required this.email,
-      required this.uid,
-      required this.profilePhoto});
+  User({
+    required this.name,
+    required this.email,
+    required this.uid,
+    required this.profilePhoto,
+  });
 
   Map<String, dynamic> toJson() => {
         "name": name,
@@ -60,22 +63,22 @@ class User {
         "uid": uid,
       };
 
-  // static User fromSnap(DocumentSnapshot snap) {
-  //   var snapshot = snap.data() as Map<String, dynamic>;
-  //   return User(
-  //     email: snapshot['email'],
-  //     profilePhoto: snapshot['profilePhoto'],
-  //     uid: snapshot['uid'],
-  //     name: snapshot['name'],
-  //   );
-  // }
+  static User fromSnap(DocumentSnapshot snap) {
+    final snapshot = snap.data() as Map<String, dynamic>;
+    return User(
+      email: snapshot['email'],
+      profilePhoto: snapshot['profilePhoto'],
+      uid: snapshot['uid'],
+      name: snapshot['name'],
+    );
+  }
 }
 
 class Video {
   String username;
   String uid;
   String id;
-  List likes;
+  List<dynamic> likes;
   int commentCount;
   int shareCount;
   String songName;
@@ -112,21 +115,20 @@ class Video {
         "thumbnail": thumbnail,
       };
 
-  // static Video fromSnap(DocumentSnapshot snap) {
-  //   var snapshot = snap.data() as Map<String, dynamic>;
-
-  //   return Video(
-  //     username: snapshot['username'],
-  //     uid: snapshot['uid'],
-  //     id: snapshot['id'],
-  //     likes: snapshot['likes'],
-  //     commentCount: snapshot['commentCount'],
-  //     shareCount: snapshot['shareCount'],
-  //     songName: snapshot['songName'],
-  //     caption: snapshot['caption'],
-  //     videoUrl: snapshot['videoUrl'],
-  //     profilePhoto: snapshot['profilePhoto'],
-  //     thumbnail: snapshot['thumbnail'],
-  //   );
-  // }
+  static Video fromSnap(DocumentSnapshot snap) {
+    final snapshot = snap.data() as Map<String, dynamic>;
+    return Video(
+      username: snapshot['username'],
+      uid: snapshot['uid'],
+      id: snapshot['id'],
+      likes: snapshot['likes'],
+      commentCount: snapshot['commentCount'],
+      shareCount: snapshot['shareCount'],
+      songName: snapshot['songName'],
+      caption: snapshot['caption'],
+      videoUrl: snapshot['videoUrl'],
+      profilePhoto: snapshot['profilePhoto'],
+      thumbnail: snapshot['thumbnail'],
+    );
+  }
 }

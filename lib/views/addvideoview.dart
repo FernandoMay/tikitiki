@@ -8,11 +8,11 @@ import 'package:tikitiki/controllers/videocontroller.dart';
 import 'package:video_player/video_player.dart';
 
 class NewVideo extends StatelessWidget {
-  const NewVideo({Key? key}) : super(key: key);
+  const NewVideo({super.key});
 
   pickVideo(ImageSource src, BuildContext context) async {
     final video = await ImagePicker().pickVideo(source: src);
-    if (video != null) {
+    if (video != null && context.mounted) {
       Navigator.of(context).push(
         CupertinoPageRoute(
           builder: (context) => ConfirmView(
@@ -110,10 +110,10 @@ class ConfirmView extends StatefulWidget {
   final File videoFile;
   final String videoPath;
   const ConfirmView({
-    Key? key,
+    super.key,
     required this.videoFile,
     required this.videoPath,
-  }) : super(key: key);
+  });
 
   @override
   State<ConfirmView> createState() => _ConfirmViewState();
@@ -124,7 +124,7 @@ class _ConfirmViewState extends State<ConfirmView> {
   final TextEditingController _songController = TextEditingController();
   final TextEditingController _captionController = TextEditingController();
 
-  UploadVideoController uploadVideoController =
+  final UploadVideoController uploadVideoController =
       Get.put(UploadVideoController());
 
   @override

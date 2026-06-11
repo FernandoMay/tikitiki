@@ -1,21 +1,34 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:tikitiki/views/home.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const TikiTikiApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class TikiTikiApp extends StatelessWidget {
+  const TikiTikiApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const CupertinoApp(
-        title: 'tikitiki',
-        theme: CupertinoThemeData(
-          primaryColor: CupertinoColors.systemPink,
+    return MaterialApp(
+      title: 'TikiTiki',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: const Color(0xFFFF1493),
+          brightness: Brightness.light,
         ),
-        home: Home());
+        useMaterial3: true,
+      ),
+      darkTheme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: const Color(0xFFFF1493),
+          brightness: Brightness.dark,
+        ),
+        useMaterial3: true,
+      ),
+      themeMode: ThemeMode.dark,
+      home: const Home(),
+    );
   }
 }
